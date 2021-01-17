@@ -12,7 +12,7 @@ I modeled the User and Book relationship as a One-To-Many relationship because o
 
 If I were to expand this project, I would consider implementing a Many-To-Many relationship for Book and User, and use a through-table for Checkouts, modeling checkout data in the through table. This would allow the application to keep track of user history, and what books the user has checked out over time. In this scenario a book could have many users, and a user would have many books.
 
-## views.py
+## views.py - API ROUTES
 
 There are 4 API endpoints in this RESTful API.
 
@@ -28,12 +28,24 @@ There are 4 API endpoints in this RESTful API.
 4. Library administrator can delete a book from the collection:
    /library/delete_book/<int:book_id>
 
-## tests.py
+## test_api.py
 
-tests.py tests and validates all CRUD operations in the API and database.
+Automated testing! test_api.py populates the database, and tests and validates all CRUD operations in the API and database. I used python's built in unittest module for this.
 
 ## run.py
 
 To run the server application navigate to project directory in the bash shell. Once you are in /library, type "python run.py".
+In a new terminal window navigate to the same directory, and type "python tests.py" to populate the data base and run all the tests, which will pass.
+The app should run at: http://0.0.0.0:5000/
 
-In a new terminal window navigate to the same directory, and type "python tests.py". All tests will pass.
+## docker
+
+Build the docker image with the command "docker build -t flaskapp:latest ."
+
+To run the API with docker, use the command "docker run -it -d -p 5000:5000 flaskapp"
+This will start the docker container, run the application, populate the database, and run all tests.
+The app will run at: http://0.0.0.0:5000
+
+## important notes
+
+I didn't use Python's json.dumps() to wrap the returned JSON intentionally so that it would be easier to view the JSON resopnse in a chrome browser. I would normally do this, however for demonstration purposes, I thought it would be best to return serialized dictionaries to maintain nice formatting.

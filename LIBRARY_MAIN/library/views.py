@@ -1,3 +1,4 @@
+import json
 from flask import request, jsonify
 from flask_restful import Resource, reqparse
 from datetime import datetime, timedelta, timezone
@@ -42,7 +43,10 @@ class CheckOutBook(Resource):
                 "error": f"{book.book_name} is already chekced out by {book.owner.user_name}.",
             }, 400
 
-        if len(user.books_checked_out) < user.user_book_limit:
+        if (
+            len(user.books_checked_out) < user.user_book_limit
+            and not book.book_checked_out
+        ):
             book.checkout(user_id)
             print("updated")
             return {
@@ -64,7 +68,7 @@ class DeleteBook(Resource):
             db.session.delete(book)
             db.session.commit()
             return {"success": f"{book_name} was successfully deleted."}, 202
-        return {"error": "This book was not found..."}, 404
+        return {"error": "This book was not found..."}, 400
 
 
 # API Routes

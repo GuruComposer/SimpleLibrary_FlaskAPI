@@ -42,6 +42,8 @@ To run the server application navigate to project directory in the bash shell. O
 In a new terminal window navigate to the same directory, and type "python test_api.py" to populate the data base and run all the tests, which will pass.
 The app should run at: http://0.0.0.0:5000/
 
+When the server is running, try running "python test_api.py" to populate the database, and run automated tests!
+
 ## docker
 
 Navitage to the directory, LIBRARY_MAIN, that contains the "Dockerfile".
@@ -53,4 +55,4 @@ The app will run at: http://0.0.0.0:5000/
 
 ## important notes
 
-I didn't use Python's json.dumps() to wrap the returned JSON intentionally so that it would be easier to view the JSON resopnse in a chrome browser. I would normally do this, however for demonstration purposes, I thought it would be best to return serialized dictionaries to maintain nice formatting.
+I didn't use Python's json.dumps() to wrap the returned JSON intentionally so that it would be easier to view the JSON resopnse in a chrome browser/ terminal. I would normally do this, and then run json.loads(data) in a separate program; however, for demonstration purposes, I thought it would be best to return serialized dictionaries to maintain nice formatting.

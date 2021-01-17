@@ -34,17 +34,22 @@ Automated testing! test_api.py populates the database, and tests and validates a
 
 ## run.py
 
+To run this application without docker, create a virtual environment with python: "python -m venv venv"
+Activate the virutal environment with the command: "source venv/bin/activate"
+Navigate to the LIBRARY_MAIN directory that contains "requirements.txt". Run the command: "pip install -r requirements.txt"
+
 To run the server application navigate to project directory in the bash shell. Once you are in /library, type "python run.py".
-In a new terminal window navigate to the same directory, and type "python tests.py" to populate the data base and run all the tests, which will pass.
+In a new terminal window navigate to the same directory, and type "python test_api.py" to populate the data base and run all the tests, which will pass.
 The app should run at: http://0.0.0.0:5000/
 
 ## docker
 
+Navitage to the directory, LIBRARY_MAIN, that contains the "Dockerfile".
 Build the docker image with the command "docker build -t flaskapp:latest ."
 
 To run the API with docker, use the command "docker run -it -d -p 5000:5000 flaskapp"
 This will start the docker container, run the application, populate the database, and run all tests.
-The app will run at: http://0.0.0.0:5000
+The app will run at: http://0.0.0.0:5000/
 
 ## important notes
 
